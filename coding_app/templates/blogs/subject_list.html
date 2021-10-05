@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+  <h1>Subjects for {{user.username}}</h1>
+  <ul>
+    {% for subject in subjects %}
+    <div>
+      <li>
+        <a href="{% url 'blogs:get_subject_detail' subject_id=subject.id %}">
+          <h3>{{subject.title}}</h3>
+        </a>
+      </li>
+    </div>
+    {% endfor %}
+  </ul>
+  <br />
+  <a href=" {% url 'blogs:new_subject' %}">Enter a New Subject</a>
+</div>
+
+{% endblock %}
