@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+  <h1>{{program.name}}</h1>
+  <h3>{{program.description}}</h3>
+  <h3>{{program.notes}}</h3>
+  <h3>{{program.link}}</h3>
+  <h3>{{program.date_created}}</h3>
+  <br />
+  <a href="{% url 'blogs:edit_program' subject_id=subject.id program_id=program.id %}">Edit Program</a>
+  <br />
+  <form method="POST" action="{% url 'blogs:delete_program' subject_id=subject.id program_id=program.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete Program" />
+  </form>
+  <br />
+  <button onclick="goBack()">Go Back to Programs</button>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</div>
+
+{% endblock %}

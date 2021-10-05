@@ -3,7 +3,9 @@
 {% block content %}
 
 <div>
-  <h1>{{subject.title}}</h1>
+  <a href="{% url 'blogs:get_program_list' subject_id=subject.id %}">
+    <h1>{{subject.title}}</h1>
+  </a>
   <br />
   <a href="{% url 'blogs:edit_subject' subject_id=subject.id %}">Edit Subject</a>
   <form method="POST" action="{% url 'blogs:delete_subject' subject_id=subject.id %}">

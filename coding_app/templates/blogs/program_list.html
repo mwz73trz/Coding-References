@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+  <h1>Program Areas for {{subject.title}}</h1>
+  <br />
+  <ul>
+    {% for program in programs %}
+    <li>
+      <a href="{% url 'blogs:get_program_detail' subject_id=subject.id program_id=program.id %}">{{program.name}} </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <br />
+  <a href="{% url 'blogs:new_program' subject_id=subject.id %}">Add New Program</a>
+  <br />
+  <button onclick="goBack()">Back to Subjects</button>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</div>
+
+{% endblock %}

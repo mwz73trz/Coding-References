@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+  <h1>{{ type_of_request }} Program</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <br>
+  <button onclick="goBack()">Go Back</button>
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</div>
+
+{% endblock %}
